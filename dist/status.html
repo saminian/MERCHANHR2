@@ -81,14 +81,14 @@
           
           <li class="sidebar-item mb-2">
             <i class="fas fa-users text-gray-400 sidebar-icon"></i>
-            <a href="#" class="block rounded-lg text-sm text-black-600 font-semibold hover:bg-amber-200 hover:pt-2 pb-2 pl-2 pr-1 sidebar-text">
+            <a href="attendancestat.html" class="block rounded-lg text-sm text-black-600 font-semibold hover:bg-amber-200 hover:pt-2 pb-2 pl-2 pr-1 sidebar-text">
               Attendance Statistics
             </a>
           </li>
           
           <li class="sidebar-item mb-2">
             <i class="fas fa-chart-line text-gray-400 sidebar-icon"></i>
-            <a href="#" class="block rounded-lg text-sm text-black-600 font-semibold hover:bg-amber-200 hover:pt-2 pb-2 pl-2 pr-1 sidebar-text">
+            <a href="performstatistic.html" class="block rounded-lg text-sm text-black-600 font-semibold hover:bg-amber-200 hover:pt-2 pb-2 pl-2 pr-1 sidebar-text">
               Performance Statistics
             </a>
           </li>
@@ -130,13 +130,13 @@
   
       <!-- Search Bar -->
       <div class="flex-grow container mx-auto bg-white h-[70%] mt-5 rounded-xl p-4 shadow-lg">
-      <div class="mb-4">
-        <input type="text" id="searchTrainee" placeholder="Search by name or department" class="p-1 border border-gray-300 rounded w-1/3">
-    </div>
-  
+        <div class="mb-4">
+            <input type="text" id="searchEmployee" placeholder="Search by name or department" class="p-1 border border-gray-300 rounded w-1/3"> 
+        </div> 
+
     <div class="overflow-x-auto">
         <!-- Table -->
-        <table id="traineeViewList" class="min-w-full bg-white  shadow-md overflow-hidden">
+        <table id="traineeViewList" class="w-full max-w-5xl mx-auto bg-white border border-gray-300 rounded-xl shadow-lg text-sm overflow-hidden">
           <thead>
             <tr class="bg-amber-500 text-left">
               <th class="p-3 px-5">Employee Name</th>
@@ -152,28 +152,14 @@
               <td class="p-3 px-5">Customer Service</td>
               <td class="p-3 px-5">Customer Service 101</td>
               <td class="p-3 px-5">2025-02-01</td>
-              <td class="p-3 px-5">Completed</td>
+              <td class="p-3 px-5 text-green-600 font-semibold">Completed</td>
             </tr>
             <tr>
               <td class="p-3 px-5">Jane Smith</td>
               <td class="p-3 px-5">Safety & Compliance</td>
               <td class="p-3 px-5">Safety Training</td>
               <td class="p-3 px-5">2025-01-25</td>
-              <td class="p-3 px-5">In Progress</td>
-            </tr>
-            <tr>
-              <td class="p-3 px-5">Alice Brown</td>
-              <td class="p-3 px-5">Management</td>
-              <td class="p-3 px-5">Leadership Skills</td>
-              <td class="p-3 px-5">2025-02-05</td>
-              <td class="p-3 px-5">Completed</td>
-            </tr>
-            <tr>
-              <td class="p-3 px-5">Bob Johnson</td>
-              <td class="p-3 px-5">Legal</td>
-              <td class="p-3 px-5">Compliance</td>
-              <td class="p-3 px-5">2025-02-03</td>
-              <td class="p-3 px-5">Completed</td>
+              <td class="p-3 px-5 text-red-600 font-semibold">In Progress</td>
             </tr>
           </tbody>
         </table>
@@ -210,14 +196,14 @@
     });
 
     // Search functionality
-  document.getElementById("searchTrainee").addEventListener("input", function() {
-    let filter = this.value.toLowerCase();
-    let rows = document.querySelectorAll("#traineeViewList tr");
+    document.getElementById("searchEmployee").addEventListener("input", function() {
+    let filter = this.value.toLowerCase();  // Get the input value and convert to lowercase
+    let rows = document.querySelectorAll("table tbody tr");  // Get all table rows
     rows.forEach(row => {
-      let text = row.textContent.toLowerCase();
-      row.style.display = text.includes(filter) ? "" : "none";
+        let text = row.textContent.toLowerCase();  // Get the text content of the row
+        row.style.display = text.includes(filter) ? "" : "none";  // Show or hide the row based on the search filter
     });
-  });
+});
   
   </script>
 </body>
