@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HR2</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="output.css">
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body class="overflow-hidden bg-white-100 font-sans">
+  <!-- Navbar -->
+  <nav>
+    <div class="flex h-16 items-center p-5 justify-between drop-shadow-xl cursor-pointer shadow-lg shadow-gray-300/50">
+      <!-- Left Nav -->
+      <ul class="flex flex-row items-center space-x-3">
+        <li>
+          <button onclick="toggleSidebar()">
+            <i class="fas fa-bars text-black text-2xl cursor-pointer"></i>
+          </button>
+        </li>
+        <img src="../src/img/gwamlogo.png" alt="LOGO" class="w-11">
+        <li class="lg:block md:block text-black text-m font-semibold">HR L&D PERFORMANCE TRAINING MANAGEMENT SYSTEM</li>
+      </ul>
+  
+      <!-- Right Nav -->
+      <div class="flex flex-row items-center space-x-3">
+        <button>
+          <i class="fas fa-inbox text-black text-xl cursor-pointer"></i>
+        </button>
+        <button>
+          <i class="fas fa-bell text-black text-xl cursor-pointer"></i>
+        </button>
+        <div class="relative">
+          <a href="#" onclick="toggleDropdown()" id="profile-icon" class="rounded-full w-9 h-9 cursor-pointer">
+            <img src="../src/img/HR.png" alt="Profile" class="w-9 h-9 rounded-full">
+          </a>
+          
+          <!-- Dropdown Menu -->
+          <div id="profileDropdown" class="absolute right-0 mt-2 w-40 bg-white shadow-lg rounded-lg hidden">
+            <a href="#" class="block px-4 py-2 text-black hover:bg-gray-200">HR DEPT.</a>
+            <a href="dashboard.html" class="block px-4 py-2 text-black hover:bg-gray-200">Log Out</a>
+          </div>
+        </div>
+      </div>
+  </nav>
+
+
+  <div class="flex h-screen">
+    <!-- Sidebar -->
+    <aside id="sidebar" class="w-64 bg-white shadow-lg flex-shrink-0 h-screen overflow-y-auto expanded">
+      <div class="p-5 mb-14">
+        <!-- Dashboard -->
+        <div class="sidebar-item">
+          <i class="fas fa-tachometer-alt text-amber-500 sidebar-icon"></i>
+          <a href="dashboard.html" class="text-xl font-bold text-amber-500 font-sans sidebar-text">DASHBOARD</a>
+        </div>
+        
+        <ul class="mt-5">
+          <!-- Learning Management -->
+          <li class="sidebar-item mb-2 font-bold font-sans text-amber-500">
+            <i class="fas fa-book-reader text-amber-500 sidebar-icon"></i>
+            <span class="text-l sidebar-text">Learning and Development</span>
+          </li>
+          
+          <li class="sidebar-item mb-2">
+            <i class="fas fa-file-alt text-gray-400 sidebar-icon"></i>
+            <a href="workshop.html" class="block rounded-lg text-sm text-black-600 font-semibold hover:bg-amber-200 hover:pt-2 pb-2 pl-2 pr-4  sidebar-text">
+              Training Workshop
+            </a>
+          </li>
+          
+          <!-- Performance Management -->
+          <li class="sidebar-item mb-2 font-bold font-sans text-amber-500">
+            <i class="fa fa-bar-chart text-amber-500 sidebar-icon"></i>
+            <span class="text-l sidebar-text">Performance Management</span>
+          </li>
+          
+          <li class="sidebar-item mb-2">
+            <i class="fas fa-users text-gray-400 sidebar-icon"></i>
+            <a href="attendancestat.html" class="block rounded-lg text-sm text-black-600 font-semibold hover:bg-amber-200 hover:pt-2 pb-2 pl-2 pr-1 sidebar-text">
+              Attendance Statistics
+            </a>
+          </li>
+          
+          <li class="sidebar-item mb-2">
+            <i class="fas fa-chart-line text-gray-400 sidebar-icon"></i>
+            <a href="performstatistic.html" class="block rounded-lg text-sm text-black-600 font-semibold hover:bg-amber-200 hover:pt-2 pb-2 pl-2 pr-1 sidebar-text">
+              Performance Statistics
+            </a>
+          </li>
+          
+          <li class="sidebar-item mb-2">
+            <i class="fas fa-star text-gray-400 sidebar-icon"></i>
+            <a href="evaluation.html" class="block rounded-lg text-sm text-black-600 font-semibold hover:bg-amber-200 hover:pt-2 pb-2 pl-2  sidebar-text">
+              Performance Evaluation
+            </a>
+          </li>
+          
+          <li class="sidebar-item mb-2">
+            <i class="fas fa-user-check text-gray-400 sidebar-icon"></i>
+            <a href="status.html" class="block rounded-lg text-sm text-black-600 font-semibold hover:bg-amber-200 hover:pt-2 pb-2 pl-2 pr-1 sidebar-text">
+              Employee Training Status
+            </a>
+          </li>
+          
+          <!-- Training Management -->
+          <li class="sidebar-item mb-2 font-bold font-sans text-amber-500">
+            <i class="fas fa-chalkboard-teacher text-amber-500 sidebar-icon"></i>
+            <span class="text-l sidebar-text">Training Management</span>
+          </li>
+          
+          <li class="sidebar-item mb-2">
+            <i class="fas fa-calendar-alt text-gray-400 sidebar-icon"></i>
+            <a href="schedule.html" class="block rounded-lg text-sm text-black-600 font-semibold hover:bg-amber-200 hover:pt-2 pb-2 pl-2 pr-6 sidebar-text">
+              Training Schedule
+            </a>
+          </li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="flex-grow bg-gray-300 p-1 pl-5 overflow-y-auto">
+      <div class="p-6">
+        <h2 class="text-xl font-bold mb-4 bg-white rounded-xl pt-2 pb-2 indent-4">Performance Evaluation</h2>
+    
+        <div class="flex space-x-4 mb-6">
+            <button class="tablinks bg-amber-500 text-white px-4 py-2 rounded" onclick="openTab(event, 'employeeList')">Employee List</button>
+            <button class="tablinks bg-amber-500 text-white px-4 py-2 rounded" onclick="openTab(event, 'evaluatedEmployees')">Evaluated Employees</button>
+        </div>
+    
+        <div id="employeeList" class="tabcontent container mx-auto bg-white h-[70%] mt-5 rounded-xl p-4 shadow-lg">
+            <div class="flex justify-between items-center mb-4">
+                <input type="text" id="searchBar" class="border p-2 rounded w-1/2" placeholder="Search for employees by name..." onkeyup="searchEmployees()">
+                <button id="addEmployeeBtn" class="bg-amber-500 text-white px-4 py-2 rounded" onclick="openAddEmployeeModal()">Add Employee</button>
+            </div>
+    
+            <div class="overflow-x-auto">
+                <h2 class="text-xl font-semibold mb-2">Employee List</h2>
+                <table class="w-full table-auto border-collapse text-sm">
+                    <thead>
+                        <tr class="bg-amber-500">
+                            <th class=" p-2">Name</th>
+                            <th class=" p-2">Department</th>
+                            <th class=" p-2">Email</th>
+                            <th class=" p-2">Performance Evaluation</th>
+                        </tr>
+                    </thead>
+                    <tbody id="employeeTable" class="text-center">
+                        <!-- Employee rows dynamically added here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    
+        <div id="evaluatedEmployees" class="tabcontent hidden container mx-auto bg-white h-[70%] mt-5 rounded-xl p-4 shadow-lg">
+            <div class="mb-4 ">
+                <input type="text" id="evaluatedSearchBar" class="border p-2 rounded w-1/2" placeholder="Search for evaluated employees by name..." onkeyup="searchEvaluatedEmployees()">
+            </div>
+            <div class="overflow-x-auto">
+                <h2 class="text-xl font-semibold mb-2">Evaluated Employees</h2>
+                <table class="w-full border-collapse border border-gray-300">
+                    <thead>
+                        <tr class="bg-amber-500">
+                            <th class=" p-2">Name</th>
+                            <th class=" p-2">Department</th>
+                            <th class=" p-2">Email</th>
+                            <th class=" p-2">Additional Feedback</th>
+                            <th class=" p-2">Total Percentage</th>
+                            <th class=" p-2">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="evaluatedTable">
+                        <!-- Evaluated employees dynamically added here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    
+        <!-- Add Employee Modal -->
+        <div id="addEmployeeModal" class="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center hidden">
+            <div class="bg-white p-6 rounded shadow-lg w-96">
+                <span class="text-red-500 cursor-pointer float-right" onclick="closeAddEmployeeModal()">&times;</span>
+                <h3 class="text-xl font-bold mb-4">Add New Employee</h3>
+                <label for="newEmployeeName" class="block">Name:</label>
+                <input type="text" id="newEmployeeName" class="border p-2 rounded w-full mb-2" placeholder="Enter name" required>
+    
+                <label for="newEmployeeDepartment" class="block">Department:</label>
+                <input type="text" id="newEmployeeDepartment" class="border p-2 rounded w-full mb-2" placeholder="Enter Department" required>
+    
+                <label for="newEmployeeEmail" class="block">Email:</label>
+                <input type="email" id="newEmployeeEmail" class="border p-2 rounded w-full mb-4" placeholder="Enter Email" required>
+    
+                <button class="bg-amber-500 text-white px-4 py-2 rounded" onclick="addEmployee()">Add</button>
+            </div>
+        </div>
+    
+        <!-- Performance Modal -->
+        <div id="performanceModal" class="fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center hidden">
+            <div class="bg-white p-6 rounded shadow-lg w-96">
+                <a href="evaluation.html"><span class="text-red-500 cursor-pointer float-right" onclick="closeModal()">&times;</span></a>
+                <h3 class="text-xl font-bold mb-4">Performance Evaluation for <span id="employeeName"></span></h3>
+    
+                <table class="w-full text-center mb-4">
+                    <tr>
+                        <th>&nbsp;1</th>
+                        <th>&nbsp;2</th>
+                        <th>&nbsp;3</th>
+                        <th>&nbsp;4</th>
+                        <th>&nbsp;5</th>
+                    </tr>
+                    <tr>
+                        <td>• Communication Skills:</td>
+                        <td><input type="radio" name="communication" value="1"></td>
+                        <td><input type="radio" name="communication" value="2"></td>
+                        <td><input type="radio" name="communication" value="3"></td>
+                        <td><input type="radio" name="communication" value="4"></td>
+                        <td><input type="radio" name="communication" value="5"></td>
+                    </tr>
+                    <tr>
+                        <td>• Teamwork:</td>
+                        <td><input type="radio" name="teamwork" value="1"></td>
+                        <td><input type="radio" name="teamwork" value="2"></td>
+                        <td><input type="radio" name="teamwork" value="3"></td>
+                        <td><input type="radio" name="teamwork" value="4"></td>
+                        <td><input type="radio" name="teamwork" value="5"></td>
+                    </tr>
+                    <tr>
+                        <td>• Punctuality:</td>
+                        <td><input type="radio" name="punctuality" value="1"></td>
+                        <td><input type="radio" name="punctuality" value="2"></td>
+                        <td><input type="radio" name="punctuality" value="3"></td>
+                        <td><input type="radio" name="punctuality" value="4"></td>
+                        <td><input type="radio" name="punctuality" value="5"></td>
+                    </tr>
+                    <tr>
+                        <td>• Customer Service:</td>
+                        <td><input type="radio" name="customerService" value="1"></td>
+                        <td><input type="radio" name="customerService" value="2"></td>
+                        <td><input type="radio" name="customerService" value="3"></td>
+                        <td><input type="radio" name="customerService" value="4"></td>
+                        <td><input type="radio" name="customerService" value="5"></td>
+                    </tr>
+                    <tr>
+                        <td>• Overall Job Performance:</td>
+                        <td><input type="radio" name="jobPerformance" value="1"></td>
+                        <td><input type="radio" name="jobPerformance" value="2"></td>
+                        <td><input type="radio" name="jobPerformance" value="3"></td>
+                        <td><input type="radio" name="jobPerformance" value="4"></td>
+                        <td><input type="radio" name="jobPerformance" value="5"></td>
+                    </tr>
+                </table>
+    
+                <textarea class="border p-2 rounded w-full mb-4" placeholder="Additional Comments..." id="comments" rows="5"></textarea>
+    
+                <center>
+                    <button class="bg-amber-500 text-white px-4 py-2 rounded" onclick="submitEvaluation()">Submit</button>
+                </center>
+    
+                <div class="mt-4">
+                    <h4>Total Percentage: <span id="totalPercentage">0%</span></h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+  <script>
+    function toggleSidebar() {
+      const sidebar = document.getElementById('sidebar');
+      sidebar.classList.toggle('collapsed');
+      sidebar.classList.toggle('expanded');
+    }
+
+    function toggleDropdown() {
+      const dropdown = document.getElementById("profileDropdown");
+      dropdown.classList.toggle("hidden");
+    }
+
+    // Show scrollbar when the sidebar is hovered
+    const sidebar = document.getElementById('sidebar');
+    let timer;
+
+    sidebar.addEventListener('mouseenter', () => {
+      sidebar.style.overflowY = 'auto';  // Show scrollbar when hovered
+      clearTimeout(timer); // Prevent hiding the scrollbar too soon
+    });
+
+    sidebar.addEventListener('mouseleave', () => {
+      // Hide scrollbar after 2 seconds if no more interaction
+      timer = setTimeout(() => {
+        sidebar.style.overflowY = 'hidden';
+      }, 1000);
+    });
+
+// Function to toggle between tabs
+function openTab(evt, tabName) {
+    let i, tabcontent, tablinks;
+    tabcontent = document.querySelectorAll(".tabcontent");
+    tablinks = document.querySelectorAll(".tablinks");
+
+    tabcontent.forEach(content => {
+        content.style.display = "none";
+    });
+
+    tablinks.forEach(link => {
+        link.classList.remove("bg-amber-500", "text-white");
+        link.classList.add("bg-amber-500", "text-white");
+    });
+
+    document.getElementById(tabName).style.display = "block";
+    evt.currentTarget.classList.remove("bg-amber-500", "text-white");
+    evt.currentTarget.classList.add("bg-amber-500", "text-white");
+}
+
+function openAddEmployeeModal() {
+    document.getElementById('addEmployeeModal').classList.remove('hidden');
+}
+
+function closeAddEmployeeModal() {
+    document.getElementById('addEmployeeModal').classList.add('hidden');
+}
+
+function addEmployee() {
+    const name = document.getElementById('newEmployeeName').value;
+    const department = document.getElementById('newEmployeeDepartment').value;
+    const email = document.getElementById('newEmployeeEmail').value;
+
+    if (!name || !department || !email) {
+        alert("All fields are required!");
+        return;
+    }
+    
+    if (!email.includes("@")) {
+        alert("Please enter a valid email address.");
+        return;
+    }
+    
+    const table = document.getElementById("employeeTable");
+    const newRow = table.insertRow();
+    newRow.innerHTML = `
+        <td>${name}</td>
+        <td>${department}</td>
+        <td>${email}</td>
+        <td><button class="bg-amber-500 text-white px-4 py-2 rounded" onclick="openPerformanceModal('${name}', '${department}', '${email}')">Evaluate</button></td>
+    `;
+
+    closeAddEmployeeModal();
+}
+
+function openPerformanceModal(name, department, email) {
+    document.getElementById('employeeName').textContent = name;
+    document.getElementById('performanceModal').dataset.name = name;
+    document.getElementById('performanceModal').dataset.department = department;
+    document.getElementById('performanceModal').dataset.email = email;
+    document.getElementById('performanceModal').classList.remove('hidden');
+}
+
+function closeModal() {
+    document.getElementById('performanceModal').classList.add('hidden');
+}
+
+function submitEvaluation() {
+    const communication = document.querySelector('input[name="communication"]:checked');
+    const teamwork = document.querySelector('input[name="teamwork"]:checked');
+    const punctuality = document.querySelector('input[name="punctuality"]:checked');
+    const customerService = document.querySelector('input[name="customerService"]:checked');
+    const jobPerformance = document.querySelector('input[name="jobPerformance"]:checked');
+
+    if (!communication || !teamwork || !punctuality || !customerService || !jobPerformance) {
+        alert("Please complete the evaluation for all criteria.");
+        return;
+    }
+
+    const totalScore = parseInt(communication.value) + parseInt(teamwork.value) + parseInt(punctuality.value) + parseInt(customerService.value) + parseInt(jobPerformance.value);
+    const totalPercentage = (totalScore / 25) * 100;
+    const status = totalPercentage >= 60 ? "Pass" : "Fail";
+
+    const name = document.getElementById('performanceModal').dataset.name;
+    const department = document.getElementById('performanceModal').dataset.department;
+    const email = document.getElementById('performanceModal').dataset.email;
+    const comments = document.getElementById('comments').value;
+
+    const evaluatedTable = document.getElementById("evaluatedTable");
+    const newRow = evaluatedTable.insertRow();
+    newRow.innerHTML = `
+        <td>${name}</td>
+        <td>${department}</td>
+        <td>${email}</td>
+        <td>${comments}</td>
+        <td>${totalPercentage.toFixed(2)}%</td>
+        <td>${status}</td>
+    `;
+
+    closeModal();
+    alert(`Evaluation Submitted! Total Percentage: ${totalPercentage.toFixed(2)}%`);
+
+    document.querySelector('.tablinks[onclick*="evaluatedEmployees"]').click();
+}
+
+function searchEmployees() {
+    const filter = document.getElementById('searchBar').value.toLowerCase();
+    const rows = document.querySelectorAll("#employeeTable tr");
+
+    rows.forEach(row => {
+        const name = row.cells[0].textContent.toLowerCase();
+        row.style.display = name.includes(filter) ? "" : "none";
+    });
+}
+
+function searchEvaluatedEmployees() {
+    const filter = document.getElementById('evaluatedSearchBar').value.toLowerCase();
+    const rows = document.querySelectorAll("#evaluatedTable tr");
+
+    rows.forEach(row => {
+        const name = row.cells[0].textContent.toLowerCase();
+        row.style.display = name.includes(filter) ? "" : "none";
+    });
+}
+
+  </script>
+</body>
+</html>
