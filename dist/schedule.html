@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="output.css">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="..src/input.css">
 
 </head>
 
@@ -23,7 +23,7 @@
           </button>
         </li>
         <img src="../src/img/gwamlogo.png" alt="LOGO" class="w-11">
-        <li class="lg:block md:block text-black text-l font-semibold">HR LEARNING AND PERFORMANCE TRAINING MANAGEMENT</li>
+        <li class="lg:block md:block text-black text-l font-semibold">HR L&D PERFORMANCE TRAINING MANAGEMENT SYSTEM</li>
       </ul>
   
       <!-- Right Nav -->
@@ -68,8 +68,8 @@
           
           <li class="sidebar-item mb-2">
             <i class="fas fa-file-alt text-gray-400 sidebar-icon"></i>
-            <a href="#" class="block rounded-lg text-sm text-black-600 font-semibold hover:bg-amber-200 hover:pt-2 pb-2 pl-2 pr-4  sidebar-text">
-              Training Program
+            <a href="workshop.html" class="block rounded-lg text-sm text-black-600 font-semibold hover:bg-amber-200 hover:pt-2 pb-2 pl-2 pr-4  sidebar-text">
+              Training Workshop
             </a>
           </li>
           
@@ -95,7 +95,7 @@
           
           <li class="sidebar-item mb-2">
             <a href="#" class="fas fa-star text-gray-400 sidebar-icon"></a>
-            <a href="#" class="block rounded-lg text-sm text-black-600 font-semibold hover:bg-amber-200 hover:pt-2 pb-2 pl-2  sidebar-text">
+            <a href="evaluation.html" class="block rounded-lg text-sm text-black-600 font-semibold hover:bg-amber-200 hover:pt-2 pb-2 pl-2  sidebar-text">
               Performance Evaluation
             </a>
           </li>
@@ -136,7 +136,7 @@
             </div>
     
             <div class="overflow-x-auto">
-    <table class="min-w-full bg-white border border-gray-300 table-fixed">
+    <table class="w-full table-auto border-collapse  text-sm">
         <thead>
             <tr class="bg-amber-500">
                 <th class="px-4 py-2">Employee Name</th>
@@ -187,6 +187,31 @@
           </form>
       </div>
   </div>
+  <!-- Add Schedule Modal -->
+  <div class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden" id="scheduleModal">
+    <div class="bg-white p-4 rounded-lg w-full max-w-lg mx-4">
+        <span class="close text-xl cursor-pointer float-right" onclick="closeModal()">&times;</span>
+        <h2 class="text-xl font-semibold mb-4">Add Schedule</h2>
+        <form id="addScheduleForm" class="space-y-2">
+            <input type="text" name="lastname" required placeholder="Last Name" class="w-full p-1 border border-gray-300 rounded">
+            <input type="text" name="firstname" required placeholder="First Name" class="w-full p-1 border border-gray-300 rounded">
+            <input type="text" name="middlename" required placeholder="Middle Name" class="w-full p-1 border border-gray-300 rounded">
+            <input type="text" name="depart" required placeholder="Department" class="w-full p-1 border border-gray-300 rounded">
+            <input type="email" name="email" required placeholder="Email" class="w-full p-1 border border-gray-300 rounded">
+            <select name="training" required class="w-full p-1 border border-gray-300 rounded">
+                <option value="">Select Training</option>
+                <option value="Training 1">Training 1</option>
+                <option value="Training 2">Training 2</option>
+                <option value="Training 3">Training 3</option>
+            </select>
+            <input type="date" name="date" required class="w-full p-1 border border-gray-300 rounded">
+            <input type="time" name="time" required class="w-full p-1 border border-gray-300 rounded">
+            <input type="text" name="venue" required placeholder="Venue" class="w-full p-1 border border-gray-300 rounded">
+            <input type="text" name="speaker" required placeholder="Speaker" class="w-full p-1 border border-gray-300 rounded">
+            <button type="submit" class="w-full bg-amber-500 text-white py-2 rounded">Add Schedule</button>
+        </form>
+    </div>
+</div>
     
        
   <script>
@@ -237,6 +262,16 @@ function closeViewModal() {
     document.getElementById("viewModal").classList.add("hidden");
 }
 
+// Open the "Add Schedule" modal
+function openScheduleModal() {
+    document.getElementById("scheduleModal").classList.remove("hidden");
+}
+
+// Close the "Schedule Trainee" modal
+function closeScheduleModal() {
+    document.getElementById("scheduleModal").classList.add("hidden");
+}
+
 // Search functionality
 document.getElementById("searchTrainee").addEventListener("input", function() {
     let filter = this.value.toLowerCase();
@@ -248,43 +283,12 @@ document.getElementById("searchTrainee").addEventListener("input", function() {
 });
 
 // Add new trainee to the table
-// Open the "Add New Trainee" modal
-function openNewTraineeModal() {
-        document.getElementById("myModal").classList.remove("hidden");
-    }
-
-    // Close the "Add New Trainee" modal
-    function closeModal() {
-        document.getElementById("myModal").classList.add("hidden");
-    }
-
-    // Open the "View Trainee Details" modal
-    function openViewModal() {
-        document.getElementById("viewModal").classList.remove("hidden");
-    }
-
-    // Close the "View Trainee Details" modal
-    function closeViewModal() {
-        document.getElementById("viewModal").classList.add("hidden");
-    }
-
-    // Search functionality
-    document.getElementById("searchTrainee").addEventListener("input", function() {
-        let filter = this.value.toLowerCase();
-        let rows = document.querySelectorAll("#traineeViewList tr");
-        rows.forEach(row => {
-            let text = row.textContent.toLowerCase();
-            row.style.display = text.includes(filter) ? "" : "none";
-        });
-    });
-
-    // Add new trainee to the table
-    document.getElementById("addTraineeForm").addEventListener("submit", function(event) {
+document.getElementById("addTraineeForm").addEventListener("submit", function(event) {
     event.preventDefault();
 
     var lastname = event.target.lastname.value;
     var firstname = event.target.firstname.value;
-    var middlename = event.target.middlename.value; // Get the middle name value
+    var middlename = event.target.middlename.value;
     var department = event.target.depart.value;
     var email = event.target.email.value;
     var training = event.target.training.value;
@@ -293,21 +297,20 @@ function openNewTraineeModal() {
     var venue = event.target.venue.value;
     var speaker = event.target.speaker.value;
 
-    // Combine lastname, firstname, and middlename into "Employee Name"
     var employeeName = `${firstname} ${middlename ? middlename + ' ' : ''}${lastname}`;
 
     var newRow = document.createElement("tr");
     newRow.innerHTML = `
-        <td class="px-4 py-2 border break-words">${employeeName}</td> <!-- Use the combined employee name -->
+        <td class="px-4 py-2 border break-words">${employeeName}</td>
         <td class="px-4 py-2 border break-words">${department}</td>
         <td class="px-4 py-2 border break-words">${email}</td>
         <td class="px-4 py-2 border">
+            <button class="view-btn px-2 py-1 bg-green-500 text-white rounded" onclick="scheduleTrainee(this)">Schedule</button>
             <button class="view-btn px-2 py-1 bg-green-500 text-white rounded" onclick="viewTrainee(this)">View</button>
             <button class="edit-btn px-2 py-1 bg-yellow-500 text-white rounded" onclick="editTrainee(this)">Edit</button>
             <button class="delete-btn px-2 py-1 bg-red-600 text-white rounded" onclick="deleteTrainee(this)">Delete</button>
         </td>
     `;
-
     // Store the hidden details as a data attribute in the row
     newRow.setAttribute("data-training", training);
     newRow.setAttribute("data-date", date);
@@ -317,6 +320,47 @@ function openNewTraineeModal() {
 
     document.getElementById("traineeViewList").appendChild(newRow);
     closeModal(); // Close the Add Trainee Modal after submission
+    event.target.reset(); // Clear the form fields
+});
+
+// Add schedule form event listener
+document.getElementById("addScheduleForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    var lastname = event.target.lastname.value;
+    var firstname = event.target.firstname.value;
+    var middlename = event.target.middlename.value;
+    var department = event.target.depart.value;
+    var email = event.target.email.value;
+    var training = event.target.training.value;
+    var date = event.target.date.value;
+    var time = event.target.time.value;
+    var venue = event.target.venue.value;
+    var speaker = event.target.speaker.value;
+
+    var employeeName = `${firstname} ${middlename ? middlename + ' ' : ''}${lastname}`;
+
+    var newRow = document.createElement("tr");
+    newRow.innerHTML = `
+        <td class="px-4 py-2 border break-words">${employeeName}</td>
+        <td class="px-4 py-2 border break-words">${department}</td>
+        <td class="px-4 py-2 border break-words">${email}</td>
+        <td class="px-4 py-2 border">
+            <button class="view-btn px-2 py-1 bg-green-500 text-white rounded" onclick="scheduleTrainee(this)">Schedule</button>
+            <button class="view-btn px-2 py-1 bg-green-500 text-white rounded" onclick="viewTrainee(this)">View</button>
+            <button class="edit-btn px-2 py-1 bg-yellow-500 text-white rounded" onclick="editTrainee(this)">Edit</button>
+            <button class="delete-btn px-2 py-1 bg-red-600 text-white rounded" onclick="deleteTrainee(this)">Delete</button>
+        </td>
+    `;
+    // Store the hidden details as a data attribute in the row
+    newRow.setAttribute("data-training", training);
+    newRow.setAttribute("data-date", date);
+    newRow.setAttribute("data-time", time);
+    newRow.setAttribute("data-venue", venue);
+    newRow.setAttribute("data-speaker", speaker);
+
+    document.getElementById("traineeViewList").appendChild(newRow);
+    closeScheduleModal(); // Close the Add Schedule Modal after submission
     event.target.reset(); // Clear the form fields
 });
 
@@ -331,20 +375,21 @@ function editTrainee(button) {
     var row = button.closest("tr");
     var cells = row.querySelectorAll("td");
 
-    document.getElementById("addTraineeForm").lastname.value = cells[0].textContent.split(' ').pop(); // Last name
-    document.getElementById("addTraineeForm").firstname.value = cells[0].textContent.split(' ')[0]; // First name
-    document.getElementById("addTraineeForm").middlename.value = cells[0].textContent.split(' ').slice(1, -1).join(' '); // Middle name (if exists)
-    document.getElementById("addTraineeForm").depart.value = cells[1].textContent;
-    document.getElementById("addTraineeForm").email.value = cells[2].textContent;
+    // Fix: Correct form IDs in edit function
+    document.getElementById("addScheduleForm").lastname.value = cells[0].textContent.split(' ').pop(); // Last name
+    document.getElementById("addScheduleForm").firstname.value = cells[0].textContent.split(' ')[0]; // First name
+    document.getElementById("addScheduleForm").middlename.value = cells[0].textContent.split(' ').slice(1, -1).join(' '); // Middle name (if exists)
+    document.getElementById("addScheduleForm").depart.value = cells[1].textContent;
+    document.getElementById("addScheduleForm").email.value = cells[2].textContent;
 
-    document.getElementById("addTraineeForm").training.value = row.getAttribute("data-training");
-    document.getElementById("addTraineeForm").date.value = row.getAttribute("data-date");
-    document.getElementById("addTraineeForm").time.value = row.getAttribute("data-time");
-    document.getElementById("addTraineeForm").venue.value = row.getAttribute("data-venue");
-    document.getElementById("addTraineeForm").speaker.value = row.getAttribute("data-speaker");
+    document.getElementById("addScheduleForm").training.value = row.getAttribute("data-training");
+    document.getElementById("addScheduleForm").date.value = row.getAttribute("data-date");
+    document.getElementById("addScheduleForm").time.value = row.getAttribute("data-time");
+    document.getElementById("addScheduleForm").venue.value = row.getAttribute("data-venue");
+    document.getElementById("addScheduleForm").speaker.value = row.getAttribute("data-speaker");
 
     row.remove(); // Remove the old row
-    openNewTraineeModal(); // Open the Add Trainee modal
+    openNewTraineeModal(); // Open the Add New Trainee Modal for editing
 }
 
 // View trainee details in modal
@@ -367,6 +412,11 @@ function viewTrainee(button) {
     document.getElementById("traineeDetails").innerHTML = details;
     openViewModal(); // Open the View Trainee modal
 }
-  </script>
+
+// Placeholder for schedule trainee function (to be defined)
+function scheduleTrainee(button) {
+    alert("Schedule function is not yet defined.");
+}
+</script>
 </body>
 </html>

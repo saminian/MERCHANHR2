@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="output.css">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="..src/input.css">
 
 </head>
 
@@ -68,8 +68,8 @@
           
           <li class="sidebar-item mb-2">
             <i class="fas fa-file-alt text-gray-400 sidebar-icon"></i>
-            <a href="#" class="block rounded-lg text-sm text-black-600 font-semibold hover:bg-amber-200 hover:pt-2 pb-2 pl-2 pr-4  sidebar-text">
-              Training Assessment
+            <a href="workshop.html" class="block rounded-lg text-sm text-black-600 font-semibold hover:bg-amber-200 hover:pt-2 pb-2 pl-2 pr-4  sidebar-text">
+              Training Workshop
             </a>
           </li>
           
@@ -95,7 +95,7 @@
           
           <li class="sidebar-item mb-2">
             <i class="fas fa-star text-gray-400 sidebar-icon"></i>
-            <a href="#" class="block rounded-lg text-sm text-black-600 font-semibold hover:bg-amber-200 hover:pt-2 pb-2 pl-2  sidebar-text">
+            <a href="evaluation.html" class="block rounded-lg text-sm text-black-600 font-semibold hover:bg-amber-200 hover:pt-2 pb-2 pl-2  sidebar-text">
               Performance Evaluation
             </a>
           </li>
@@ -138,17 +138,14 @@
 
             <!-- Performance Statistics Table -->
             <div class="overflow-x-auto">
-                <table class="w-full max-w-5xl mx-auto bg-white border border-gray-300 rounded-xl shadow-lg text-sm">
+                <table class="w-full table-auto border-collapse  text-sm">
                     <thead class="bg-amber-500">
                         <tr>
                             <th class="px-4 py-2 text-left border-b">Name</th>
                             <th class="px-4 py-2 text-left border-b">Department</th>
                             <th class="px-4 py-2 text-left border-b">Avg. Rating (1-5)</th>
-                            <th class="px-4 py-2 text-left border-b">Best Skill</th>
-                            <th class="px-4 py-2 text-left border-b">Weakest Skill</th>
                             <th class="px-4 py-2 text-left border-b">Attendance (%)</th>
-                            <th class="px-4 py-2 text-left border-b">Completed Training</th>
-                            <th class="px-4 py-2 text-left border-b">Improvement (%)</th>
+                            <th class="px-4 py-2 text-left border-b">Training Progress</th>
                             <th class="px-4 py-2 text-left border-b">Status</th>
                         </tr>
                     </thead>
@@ -157,22 +154,16 @@
                             <td class="px-4 py-2">Maria Santos</td>
                             <td class="px-4 py-2">Customer Service</td>
                             <td class="px-4 py-2">3.8</td>
-                            <td class="px-4 py-2">Problem-Solving</td>
-                            <td class="px-4 py-2">Leadership</td>
                             <td class="px-4 py-2">90%</td>
-                            <td class="px-4 py-2">2/3</td>
-                            <td class="px-4 py-2">8%</td>
+                            <td class="px-4 py-3">completed</td>
                             <td class="px-4 py-2 text-green-600 font-semibold">Active</td>
                         </tr>
                         <tr class="border-b">
                             <td class="px-4 py-2">John Reyes</td>
                             <td class="px-4 py-2">Warehouse</td>
                             <td class="px-4 py-2">3.5</td>
-                            <td class="px-4 py-2">Time Management</td>
-                            <td class="px-4 py-2">Communication</td>
                             <td class="px-4 py-2">85%</td>
-                            <td class="px-4 py-2">2/5</td>
-                            <td class="px-4 py-2">6%</td>
+                            <td class="px-4 py-2">in progress</td>
                             <td class="px-4 py-2 text-green-600 font-semibold">Active</td>
                         </tr>  
                     </tbody>
